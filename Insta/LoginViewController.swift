@@ -2,7 +2,7 @@
 //  LoginViewController.swift
 //  Insta
 //
-//  Created by Isis  on 2/29/16.
+//  Created by Isis Moran on 2/29/16.
 //  Copyright © 2016 codepath. All rights reserved.
 //
 
@@ -25,8 +25,15 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    
 
     @IBAction func onSignIn(sender: AnyObject) {
+//        let username = usernameField.text ?? ""
+//        let password = passwordField.text ?? ""
+        
         PFUser.logInWithUsernameInBackground(usernameField.text!, password: passwordField.text!) {
             (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
@@ -51,6 +58,10 @@ class LoginViewController: UIViewController {
                 }
         }
         
+            
+            
+            
+            
     }
     
     /*

@@ -13,6 +13,7 @@ import Parse
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -25,6 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 configuration.server = "https://instagrahamm.herokuapp.com/parse"
                 })
             )
+        if PFUser.currentUser() != nil {
+//            print("current user: \(PFUser())")
+            let loggedinVC = storyboard.instantiateViewControllerWithIdentifier("LoggedInViewController")
+            window?.rootViewController = loggedinVC
+            
+            //if there is a logged in user then load the home view controller
+
+        }
         
         return true
     }

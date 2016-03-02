@@ -2,17 +2,24 @@
 //  ViewController.swift
 //  Insta
 //
-//  Created by Isis  on 2/29/16.
+//  Created by Isis Moran on 2/29/16.
 //  Copyright © 2016 codepath. All rights reserved.
 //
 
 import UIKit
+import Parse
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    @IBAction func onLoggingOff(sender: AnyObject) {
+        PFUser.logOut()
+        print("logged off")
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
