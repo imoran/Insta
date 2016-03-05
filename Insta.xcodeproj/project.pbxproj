@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		547BB4E677D64779095DE792 /* Pods_Insta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A0F80DAA6621B85823369D6 /* Pods_Insta.framework */; };
 		631838061C8543140080C4B6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631838051C8543140080C4B6 /* LoginViewController.swift */; };
+		63B2A1E41C8807810068D402 /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2A1E31C8807810068D402 /* CaptureViewController.swift */; };
+		63B2A1E61C88094C0068D402 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2A1E51C88094C0068D402 /* ProfileViewController.swift */; };
 		63C7CA3B1C852DEB002F9ACF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C7CA3A1C852DEB002F9ACF /* AppDelegate.swift */; };
-		63C7CA3D1C852DEB002F9ACF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C7CA3C1C852DEB002F9ACF /* ViewController.swift */; };
+		63C7CA3D1C852DEB002F9ACF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C7CA3C1C852DEB002F9ACF /* HomeViewController.swift */; };
 		63C7CA401C852DEB002F9ACF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C7CA3E1C852DEB002F9ACF /* Main.storyboard */; };
 		63C7CA421C852DEB002F9ACF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63C7CA411C852DEB002F9ACF /* Assets.xcassets */; };
 		63C7CA451C852DEB002F9ACF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C7CA431C852DEB002F9ACF /* LaunchScreen.storyboard */; };
@@ -19,9 +21,11 @@
 /* Begin PBXFileReference section */
 		405F970DFA4E57E151299C1E /* Pods-Insta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Insta.release.xcconfig"; path = "Pods/Target Support Files/Pods-Insta/Pods-Insta.release.xcconfig"; sourceTree = "<group>"; };
 		631838051C8543140080C4B6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		63B2A1E31C8807810068D402 /* CaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
+		63B2A1E51C88094C0068D402 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		63C7CA371C852DEB002F9ACF /* Insta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Insta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C7CA3A1C852DEB002F9ACF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		63C7CA3C1C852DEB002F9ACF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		63C7CA3C1C852DEB002F9ACF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		63C7CA3F1C852DEB002F9ACF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63C7CA411C852DEB002F9ACF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63C7CA441C852DEB002F9ACF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +55,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		63B2A1E21C8806A50068D402 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				63C7CA3C1C852DEB002F9ACF /* HomeViewController.swift */,
+				63B2A1E31C8807810068D402 /* CaptureViewController.swift */,
+				63B2A1E51C88094C0068D402 /* ProfileViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		63C7CA2E1C852DEA002F9ACF = {
 			isa = PBXGroup;
 			children = (
@@ -72,8 +86,8 @@
 		63C7CA391C852DEB002F9ACF /* Insta */ = {
 			isa = PBXGroup;
 			children = (
+				63B2A1E21C8806A50068D402 /* ViewControllers */,
 				63C7CA3A1C852DEB002F9ACF /* AppDelegate.swift */,
-				63C7CA3C1C852DEB002F9ACF /* ViewController.swift */,
 				631838051C8543140080C4B6 /* LoginViewController.swift */,
 				63C7CA3E1C852DEB002F9ACF /* Main.storyboard */,
 				63C7CA411C852DEB002F9ACF /* Assets.xcassets */,
@@ -126,6 +140,7 @@
 				TargetAttributes = {
 					63C7CA361C852DEA002F9ACF = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 93KB3N7G53;
 					};
 				};
 			};
@@ -214,7 +229,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				631838061C8543140080C4B6 /* LoginViewController.swift in Sources */,
-				63C7CA3D1C852DEB002F9ACF /* ViewController.swift in Sources */,
+				63B2A1E41C8807810068D402 /* CaptureViewController.swift in Sources */,
+				63B2A1E61C88094C0068D402 /* ProfileViewController.swift in Sources */,
+				63C7CA3D1C852DEB002F9ACF /* HomeViewController.swift in Sources */,
 				63C7CA3B1C852DEB002F9ACF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +344,7 @@
 			baseConfigurationReference = 9C479353CEC7A1373D180976 /* Pods-Insta.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Insta/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.Insta;
@@ -339,6 +357,7 @@
 			baseConfigurationReference = 405F970DFA4E57E151299C1E /* Pods-Insta.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Insta/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.Insta;
