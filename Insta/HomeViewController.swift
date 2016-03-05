@@ -9,11 +9,16 @@
 import UIKit
 import Parse
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
+    var pictures: [PFObject]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     @IBAction func onLoggingOff(sender: AnyObject) {
@@ -25,6 +30,24 @@ class HomeViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return pictures?.count ?? 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("TableViewCell") as! TableViewCell
+        
+        if pictures != nil {
+            let object = pictures![indexPath.row]
+//            cell.object = object
+        }
+        return cell
     }
 
 

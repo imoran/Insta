@@ -67,22 +67,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jQn-9s-yQl">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="178" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jQn-9s-yQl">
                                 <rect key="frame" x="0.0" y="42" width="320" height="477"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="eUK-dE-0EV">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" rowHeight="178" id="eUK-dE-0EV" customClass="TableViewCell" customModule="Insta" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="178"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eUK-dE-0EV" id="UJc-i3-Dyb">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="177"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZxT-bQ-TWH">
+                                                    <rect key="frame" x="22" y="0.0" width="275" height="128"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8a-WR-Dqo">
+                                                    <rect key="frame" x="129" y="136" width="60" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="tableViewCellCaption" destination="b8a-WR-Dqo" id="8mw-aG-l5G"/>
+                                            <outlet property="tableViewCellImageView" destination="ZxT-bQ-TWH" id="5Wx-sb-f8o"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnJ-Ws-zeA">
-                                <rect key="frame" x="15" y="4" width="49" height="30"/>
+                                <rect key="frame" x="20" y="11" width="49" height="30"/>
                                 <state key="normal" title="Log off"/>
                                 <connections>
                                     <action selector="onLoggingOff:" destination="anP-yV-Jyv" eventType="touchUpInside" id="1EF-1b-71d"/>
@@ -93,6 +108,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="sJU-YF-t2c"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="tableView" destination="jQn-9s-yQl" id="tf4-iS-Z1A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="urq-Ym-PH6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -131,37 +149,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3m2-TS-BFC">
-                                <rect key="frame" x="40" y="58" width="239" height="168"/>
+                                <rect key="frame" x="41" y="28" width="239" height="168"/>
                                 <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5A-em-b26">
-                                <rect key="frame" x="118" y="113" width="85" height="30"/>
+                                <rect key="frame" x="118" y="362" width="85" height="30"/>
                                 <state key="normal" title="Take Picture"/>
                                 <connections>
                                     <action selector="takePicture:" destination="tgw-Be-cTJ" eventType="touchUpInside" id="XuC-Uv-rXU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgw-ip-AW1">
-                                <rect key="frame" x="91" y="151" width="139" height="30"/>
+                                <rect key="frame" x="90" y="400" width="139" height="30"/>
                                 <state key="normal" title="Select from Pictures"/>
                                 <connections>
                                     <action selector="selectPicture:" destination="tgw-Be-cTJ" eventType="touchUpInside" id="P1A-Ke-h3v"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a caption..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GaR-au-b4f">
-                                <rect key="frame" x="40" y="245" width="239" height="30"/>
+                                <rect key="frame" x="41" y="216" width="239" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZm-HJ-Ci8">
-                                <rect key="frame" x="135" y="321" width="49" height="30"/>
+                                <rect key="frame" x="135" y="254" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="postPicture:" destination="tgw-Be-cTJ" eventType="touchUpInside" id="Zl3-fX-USo"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Capture" id="88A-4z-RGj"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="captureTextField" destination="GaR-au-b4f" id="xBP-jF-nax"/>
+                        <outlet property="daPic" destination="3m2-TS-BFC" id="7eV-CW-k3S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xx3-vR-s9v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
