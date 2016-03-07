@@ -11,6 +11,7 @@ import AVFoundation
 import MobileCoreServices
 import Parse
 
+
 class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var captureTextField: UITextField!
@@ -18,16 +19,19 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     var newMedia: Bool?
     let vc = UIImagePickerController()
+    var image = UIImage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        captureTextField.delegate = self
+        vc.delegate = self
     }
     
     @IBAction func takePicture(sender: AnyObject) {
         let captureSession = AVCaptureSession()
         captureSession.sessionPreset = AVCaptureSessionPresetLow
         let devices = AVCaptureDevice.devices()
-        print(devices)
         
         let vc = UIImagePickerController()
         vc.delegate = self
@@ -61,62 +65,50 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
         
     }
-
-    @IBAction func postPicture(sender: AnyObject) {
-//        Post.getPFFileFromImage()
-    
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        image = originalImage
         let mediaType = info[UIImagePickerControllerMediaType] as! String
-    
+        
         dismissViewControllerAnimated(true, completion: nil)
+        self.daPic.image = image
         newMedia = false
         
-        if mediaType == (kUTTypeImage as! String) {
+        if mediaType == (kUTTypeImage as String) {
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-            
             daPic.image = image
             
-        if (newMedia == true) {
-            UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
-        } else if mediaType == (kUTTypeImage as! String) {
+            if (newMedia == true) {
+                UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
+            } else if mediaType == (kUTTypeImage as String) {
+                
+            }
             
         }
-            
-      }
-    
     }
     
-    class Post: NSObject {
-        class func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
-            let post = PFObject(className: "Post")
+    @IBAction func postPicture(sender: AnyObject) {
+        print("Submitted")
+        let newImage = Post.resizeImage(image, newSize: CGSize(width: 300, height: 500))
+
+        Post.postUserImage(newImage, withCaption: captureTextField.text) { (success: Bool, error: NSError?) -> Void in
+//            self.dismissViewControllerAnimated(true, completion: nil)
+            let alert = UIAlertController(title: "Success!",
+                message: "You just posted your picture!",
+                preferredStyle: UIAlertControllerStyle.Alert)
             
-            post["media"] = getPFFileFromImage(image)
-            post["author"] = PFUser.currentUser()
-            post["caption"] = caption
-            post["likesCount"] = 0
-            post["commentsCount"] = 0
+            let cancelAction = UIAlertAction(title: "Sweet!", style: .Cancel, handler: nil)
+
+            alert.addAction(cancelAction)
+            self.presentViewController(alert, animated: true, completion: nil)
             
-            post.saveInBackgroundWithBlock(completion)
             
-        }
-        
-        class func getPFFileFromImage(image: UIImage?) -> PFFile? {
-            if let image = image {
-                if let imageData = UIImagePNGRepresentation(image) {
-                    return PFFile(name: "image.png", data: imageData)
-                }
             }
-            return nil
         }
-     }
-   }
 
-
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}

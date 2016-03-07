@@ -8,10 +8,12 @@
 
 import UIKit
 import Parse
+import ParseUI
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    
     var pictures: [PFObject]?
     
     override func viewDidLoad() {
@@ -19,12 +21,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.delegate = self
         tableView.dataSource = self
+        getParseData()
+        tableView.reloadData()
+    }
+    
+    func getParseData() {
+        let query = PFQuery(className: "Post")
+        query.orderByDescending("createdAt")
+        query.includeKey("author")
+        query.limit = 20
+        
+        query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
+            if let posts = posts {
+                self.pictures = posts
+                self.tableView.reloadData()
+            }
+        }
     }
     
     @IBAction func onLoggingOff(sender: AnyObject) {
         PFUser.logOut()
         print("logged off")
-        self.dismissViewControllerAnimated(false, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +51,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewWillAppear(animated: Bool) {
+        getParseData()
         tableView.reloadData()
     }
     
@@ -43,10 +62,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TableViewCell") as! TableViewCell
         
-        if pictures != nil {
-            let object = pictures![indexPath.row]
-//            cell.object = object
-        }
+        let object = pictures![indexPath.row]
+        
+        cell.object = object
+        
         return cell
     }
 
